@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	{% endblock css_file%}
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  	<div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="padding-left:67px" class="navbar-brand" href="/">Q/A System</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Home Page</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/caiqi8877/Question-Answer-System">Link</a>
+                    </li>
+                    
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if p.user %}
+                        <li class="navbar-brand">Welcome, {{ p.user }}</li>
+                        <li style="margin-top:-8px"><a href={{p.users.create_logout_url('/')}}><button class="btn btn-success">Log out</button></a></li>
+                    {% else %}
+                        <li style="margin-top:-8px"><a href={{p.users.create_login_url(p.request.uri) }}><button class="btn btn-success">Log in</button></a></li>
+                    {% endif %}
+                </ul> <!-- nav navbar -->
+
+			</div>
+
+            
+            <!-- /.navbar-collapse -->
+		</div>
+
+        
+	</nav>
+        <div class="container">
+        <div style="padding-left:300px;padding-top:30px" class="blog-header col-sm-8">
+                    <br>
+                    <h1 class="blog-title">Question Answer System</h1>
+                    <br>
+                    <br>
+                    
+        </div>
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endautoescape %}

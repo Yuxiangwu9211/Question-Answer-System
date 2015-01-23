@@ -1,0 +1,102 @@
+{% autoescape true %}
+<head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	{% endblock css_file%}
+<style>
+h1.que {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 24px;
+	color:#AAAAAA;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.3999996185303px;
+}
+p.content {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+</style>
+</head>
+<body>	
+<div class="post">
+  <div class="post-heading">
+  
+  	<!-- Question part -->
+  	<div style="padding-left:300px;">
+
+	<div class="post-content" style="max-width:700px;">
+	
+	     <h1 class="que">question:</h1> <p class="content">{{p.render_text | safe}}</p>
+		 	
+		<div>
+			<div style="padding-right:30px">
+			<div style="text-align:right">
+		<br>
+		vote: {{ p.sumVote }}
+			</div></div>
+		<br>
+		<div>
+		<a href="/{{p.key().id()}}"> <button class="btn btn-success"> view </button></a>
+		{% if p.is_editable %}
+			
+			<a href="/{{p.key().id()}}/edit"> <button class="btn btn-info"> Edit </button></a>
+			{% endif %}
+		
+		{% if p.currentUser %}
+		
+			{% if p.mainpage %}
+				<a style="float:right" href="/{{p.key().id()}}/vote?action=downMainPage"><button class="btn btn-info">down</button></a>
+			{% else %}
+				<a style="float:right" href="/{{p.key().id()}}/vote?action=down"><button class="btn btn-info">down</button></a>
+			
+			{% endif %}
+		{% endif %}
+
+		{% if p.currentUser %}
+			<!-- <div style="text-align:right"> -->
+				{% if p.mainpage %}
+					<a style="float:right;padding-right:5px" href="/{{p.key().id()}}/vote?action=upMainPage"><button class="btn btn-success">up</button></a>
+				{% else %}
+					<a style="float:right;padding-right:5px" href="/{{p.key().id()}}/vote?action=up"><button class="btn btn-success">up</button></a>
+				{% endif %}
+		{% endif %}
+
+		
+		</div>
+	
+
+  <br>
+    
+		Posted by <a href="/{{p.user.nickname()}}"> {{p.user.nickname()}} </a>
+		<br>
+		{% if p.tags %}
+		  Tags:
+		  {% for tag in p.tags %}
+		    <a href="/{{p.user.nickname()}}/{{p.blog_name}}?tag={{tag}}"> {{tag}} </a>
+		  {% endfor %}
+		{% endif %}
+
+	
+	<!-- Time Part -->
+	<p style="color:grey">Created at {{p.create_time.strftime('%I:%M %p, %b %d, %Y')}}.
+	{% if p.has_modified %}
+	Last modified at {{p.last_modified.strftime('%I:%M %p, %b %d, %Y')}}</p>
+  {% endif %}
+  <hr style="padding-right:550px">
+  </div>
+  </div>
+  
+  
+  
+</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+{% endautoescape %}

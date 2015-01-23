@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	{% endblock css_file%}
+
+</head>
+<body>
+
+
+	<div style=padding-left:300px;padding-top:70px>
+		<h3 style="color:#00dddd"> Create your new question </h3>
+		<br>
+		{% if not p.key %}
+		  <form action="/post" enctype="multipart/form-data" method=post>
+		{% else %}
+		  <form action="/{{p.key().id()}}/post" enctype="multipart/form-data" method=post>
+		{% endif %}
+		  <br>
+		  <label>Write a new question:</label>
+
+		  <div class="text-left" style="max-width: 600px;"> 
+            <br>
+		  	<textarea name="body" class="form-control" required="" rows="20" placeholder="Contents about question"></textarea>
+		  	<!-- <br><textarea class="form-control" name=body rows=8>{{p.body_str}}</textarea> -->
+		  
+		  <br>
+		  
+		  
+			<label> Tags: </label>
+			<br>
+			<input type="text" name="tags" class="form-control" value="" placeholder="Tags seperated by space">
+			<!-- <input type=text name=tags class="form-control" placeholder="Tags seperated by space" value="{{' '.join(p.tags)}} "> -->
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<br><br>
+			<label> Upload Image: </label>
+			<br>
+			<div><input type="file" name="img" class="form-control"></div>
+			<br><br>
+			<input type=submit class="btn btn-info" value="Submit">
+			</div>
+			</form>
+
+	</div>
+	<hr>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>

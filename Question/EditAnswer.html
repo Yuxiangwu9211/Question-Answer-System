@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+
+<head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	{% endblock css_file%}
+</head>
+<body>
+<div style=padding-left:300px;padding-top:70px>
+	{% autoescape true %}
+	<h1 style="color:#00dddd"> Create a new answer </h1>
+	<br>
+	{% if not p.key %}
+	  <form action="/{{p.parent}}/answerpost" method=post>
+	{% else %}
+	  <form action="/{{p.parent}}/{{p.key().id()}}/answerpost" method=post>
+	{% endif %}
+	  <br>
+	  <label>What is your answer:</label>
+	  <div style=padding-right:400px>
+	  <br><textarea class="form-control" name=body rows="15" cols="4" placeholder="write your answer here">{{p.body_str}}</textarea>
+	  </div>
+	  <br>
+		<input type=submit class="btn btn-info" value="Submit">
+		</form>
+
+</div>
+	{% endautoescape %}
+	{%block script_load%}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	{%block script%}
+
+    {%endblock script%}
+
+    {%endblock script_load%}
+</body>
+

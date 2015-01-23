@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	{% endblock css_file%}
+  </head>
+  <body>
+  		<div style="padding-left:300px">
+  		<button style="color:#0000FF">Tag</button>
+		{% for tag in p.tags %}
+		  <a href="{{p.root_path}}?tag={{tag}}">&nbsp&nbsp <b>{{tag}}</b></a>
+		{% endfor %}
+		<br>
+		</div>
+		<hr>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endautoescape %}

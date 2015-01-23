@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+		{% if not p.last_page %}
+		  <div style="padding-left:300px"> <a href="{{p.next_page_url}}"><button>Next page</button></a> </div><br>
+		{% else %}
+		  <div style="padding-left:300px"><button>Last page</button></div>
+		{% endif %}
+		<hr>	
+  </body>
+</html>
+{% endautoescape %}

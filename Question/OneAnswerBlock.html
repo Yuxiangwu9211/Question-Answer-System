@@ -1,0 +1,68 @@
+{% autoescape true %}
+<head>
+	{% block css_file%}
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	{% endblock css_file%}
+<style>
+	h1.que {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 24px;
+	color:#AAAAAA;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.3999996185303px;
+}
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="post-heading" >
+  
+  	<div style="padding-left:300px">
+  		
+	<div class="post-content" style="max-width:700px;">
+	  <h1 class="que">Answer:</h1> {{p.render_text | safe}}
+		<br>
+		<div>
+			<div style="padding-right:30px">
+			<div style="text-align:right">
+		vote: {{ p.sumVote }}
+		</div>
+		</div>
+		<br>
+		<div>
+		{% if p.is_editable %}
+			<a href="/{{p.question_id}}/{{p.key().id()}}/edit"> <button class="btn btn-info">Edit</button> </a>
+		{% endif %}	
+		
+			
+		{% if p.currentUser %}
+			<a style="float:right" href="/{{p.question_id}}/{{p.key().id()}}/vote?action=down"><button class="btn btn-info">down</button></a>
+
+			<a style="float:right;padding-right:5px" href="/{{p.question_id}}/{{p.key().id()}}/vote?action=up"><button class="btn btn-success">up</button></a>
+
+		{% endif %}
+		</div>
+	</div>
+
+  <br>
+  <div>
+		Posted by <a href="/{{p.user.nickname()}}"> {{p.user.nickname()}} </a>
+		<br>
+	</div>
+  <p style="color:grey">Created at {{p.create_time.strftime('%I:%M %p, %b %d, %Y')}}.
+	{% if p.has_modified %}
+	 &nbsp&nbspLast modified at {{p.last_modified.strftime('%I:%M %p, %b %d, %Y')}}
+  {% endif %}
+  </p>
+  <br>
+  	<hr>
+	</div>
+	
+
+</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+{% endautoescape %}
