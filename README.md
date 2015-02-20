@@ -1,14 +1,8 @@
-Thie is the readme file for the final project.
-
-Only the 10 required features are implemented. 
 
 
+The ask-answer system is deployed at http://qc319-final.appspot.com.
 
-The question system can be found here: http://qc319-final.appspot.com
-
-
-
-Design: [ Files in the folder ]
+Design: [ Detailed description of the html and py files in the folder ]
 
 (1) Main.py: The main class of the back-end system, containing all the handler classes.( all handler classes are documented in the Main.py)
 
@@ -31,9 +25,5 @@ Design: [ Files in the folder ]
 (10) rss, rssContent, rssFoot, rssHeader handle the rss case.
 
 (11) searchTag.html: displayed at the top of the main page and can view different tags by click on it.
-
-You can only view the answer,edit,vote function when you sign in.
-
-In the viewAnswer page, the answer button is no longer useful, in order to create a new answer, click the "create a new answer" in the bottom of the page.
 
 you can always go to the main page by clicking the home page on the top-right corner.
